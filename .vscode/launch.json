@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CursoApplication<Curso>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.remedios.thiago.CursoApplication",
+            "projectName": "Curso",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
