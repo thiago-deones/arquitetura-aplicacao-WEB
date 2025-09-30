@@ -1,5 +1,7 @@
 package com.remedios.thiago;
 
+import java.time.LocalDate;
+
 import com.remedios.thiago.remedio.DadosCadastroRemedios;
 import com.remedios.thiago.remedio.Laboratorio;
 import com.remedios.thiago.remedio.Via;
@@ -43,8 +45,8 @@ public class Remedio {
     @Enumerated(EnumType.STRING)
     private Via via;
     private String lote;
-    private String quantidade;
-    private String validade;
+    private int quantidade;
+    private LocalDate validade;
 
     @Enumerated(EnumType.STRING)
     private Laboratorio laboratorio;

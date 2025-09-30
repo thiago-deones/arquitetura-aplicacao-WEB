@@ -6,6 +6,8 @@ import com.remedios.thiago.Remedio;
 import com.remedios.thiago.remedio.DadosCadastroRemedios;
 import com.remedios.thiago.remedio.RemedioRepository;
 
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +21,7 @@ public class RemedioController {
     private RemedioRepository repository;
 
     @PostMapping
-    public void cadastrar(@RequestBody DadosCadastroRemedios dados) {
+    public void cadastrar(@RequestBody @Valid DadosCadastroRemedios dados) {
         repository.save(new Remedio(dados));       
     }
 }
