@@ -1,0 +1,10 @@
+CREATE TABLE remedio (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    via VARCHAR(255) NOT NULL,
+    lote VARCHAR(255) NOT NULL,
+    quantidade VARCHAR(255) NOT NULL,
+    validade VARCHAR(255) NOT NULL,
+    laboratorio VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
