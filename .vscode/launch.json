@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "VendamaisApplication",
+            "request": "launch",
+            "mainClass": "br.com.empresa.vendamais.VendamaisApplication",
+            "projectName": "vendamais"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-CursoApplication<Curso>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
