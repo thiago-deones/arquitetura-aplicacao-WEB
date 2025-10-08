@@ -31,7 +31,7 @@ public class DepartamentoController {
         return "redirect:/departamentos";
     }
 
-    @GetMapping("/editar/{id}")
+    @GetMapping("/{id}/editar")
     public String editar(@PathVariable Long id, Model model){
         Departamento departamento = service.findById(id);
         if (departamento != null) {
@@ -41,7 +41,7 @@ public class DepartamentoController {
         return "redirect:/departamentos";
     }
 
-    @GetMapping("/detalhes/{id}")
+    @GetMapping("/{id}/detalhes")
     public String detalhes(@PathVariable Long id, Model model){
         Departamento departamento = service.findById(id);
         if (departamento != null) {
@@ -51,7 +51,7 @@ public class DepartamentoController {
         return "redirect:/departamentos";
     }
 
-    @PostMapping("/deletar/{id}")
+    @PostMapping("/{id}/deletar")
     public String excluir(@PathVariable Long id){
         service.deleteById(id);
         return "redirect:/departamentos";
