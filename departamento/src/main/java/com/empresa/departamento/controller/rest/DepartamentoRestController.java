@@ -12,7 +12,10 @@ import java.util.List;
 @RequestMapping("/api/departamentos")
 public class DepartamentoRestController {
     private final DepartamentoService service;
-    public DepartamentoRestController(DepartamentoService service) { this.service = service; }
+    
+    public DepartamentoRestController(DepartamentoService service) {
+         this.service = service;
+    }
 
     @PostMapping
     public ResponseEntity<Departamento> create(@RequestBody Departamento departamento){

@@ -16,6 +16,16 @@
             "projectName": "Curso",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-DepartamentoApplication<departamento>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.empresa.departamento.DepartamentoApplication",
+            "projectName": "departamento",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
