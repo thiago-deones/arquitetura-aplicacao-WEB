@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @GetMapping("/")
-    public String redirecionarParaDepartamentos() {
+    public String HomeController() {
         return "index";
     }
 }
