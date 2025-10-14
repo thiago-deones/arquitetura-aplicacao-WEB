@@ -20,7 +20,7 @@ public class DepartamentoService {
     public Departamento save(Departamento  departamento){
         return repo.save(departamento);
     }
-    //buscar departaemnto por id
+    //buscar departamento por id
     public Departamento findById(Long id){
         return repo.findById(id).orElse(null);
     }
@@ -37,7 +37,4 @@ public class DepartamentoService {
             return true;
         }
     } 
-
-
-
 }
