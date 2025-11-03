@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.apache.catalina.connector.Response;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,9 +34,9 @@ public class AlunoRestController {
     @PostMapping
     public ResponseEntity<?> createAluno(@RequestBody Aluno aluno){
         if (aluno.getCurso() != null && aluno.getCurso().getId() != null) {
-            Curso curso = cursoService.findById(curso.getCurso().getId());
-            if (curso != null) {
-                aluno.setCurso(curso);
+            Curso Existecurso = cursoService.findById(aluno.getCurso().getId());
+            if (Existecurso != null) {
+                aluno.setCurso(Existecurso);
                 Aluno savedAluno = service.save(aluno);
                 return ResponseEntity.status(Response.SC_CREATED).body(savedAluno);
             } else {
@@ -42,6 +44,7 @@ public class AlunoRestController {
                         .body("Curso com ID " + aluno.getCurso().getId() + " não encontrado.");
             }
         }
+        return null;
     }
 
     @GetMapping
@@ -58,6 +61,38 @@ public class AlunoRestController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Aluno> updateAluno(@PathVariable Long id, @RequestBody Aluno alunoDetails){
+        Aluno aluno = service.findById(id);
+        if (aluno != null) {
+            aluno.setNome(alunoDetails.getNome());
+            aluno.setEmail(alunoDetails.getEmail());
+            aluno.setDataNascimento(alunoDetails.getDataNascimento());
+            if (alunoDetails.getCurso() != null && alunoDetails.getCurso().getId() != null) {
+                Curso curso = cursoService.findById(alunoDetails.getCurso().getId());
+                if (curso != null) {
+                    aluno.setCurso(curso);
+                } else {
+                    return ResponseEntity.badRequest().build();
+                }
+            }
+            return ResponseEntity.ok(service.save(aluno));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAluno(@PathVariable Long id){
+        boolean deleted = service.deleteById(id);
+        if (deleted){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
     
 }
