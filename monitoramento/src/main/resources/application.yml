@@ -1,0 +1,21 @@
+server:
+  port: 8080
+  address: 0.0.0.0   # garante que o container exponha corretamente
+
+spring:
+  application:
+    name: pedido-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus   # expõe apenas os endpoints necessários
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: pedido-service
+  prometheus:
+    enabled: true

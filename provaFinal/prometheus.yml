@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'spring-boot-app'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8080']   # quando rodando local com Docker Desktop
+      # - targets: ['spring-boot-app:8080']       # quando rodando com Docker Compose
