@@ -8,7 +8,7 @@ public class DemoController {
 
     @GetMapping("/public")
     public String publico() {
-        return "Acesso público";
+        return "Acesso público.";
     }
 
     @GetMapping("/user")
