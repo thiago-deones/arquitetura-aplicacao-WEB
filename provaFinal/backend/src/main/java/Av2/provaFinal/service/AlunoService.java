@@ -3,9 +3,11 @@ package Av2.provaFinal.service;
 import Av2.provaFinal.entity.Aluno;
 import Av2.provaFinal.repository.AlunoRepository;
 import Av2.provaFinal.repository.CursoRepository;
-import io.swagger.v3.oas.annotations.servers.Server;
+import org.springframework.stereotype.Service;
 
-@Server
+import java.util.List;
+
+@Service
 public class AlunoService {
 
     private final AlunoRepository alunoRepo;
@@ -23,6 +25,7 @@ public class AlunoService {
     public Aluno matricularCurso(Long alunoId, Long cursoId) {
         Aluno aluno = alunoRepo.findById(alunoId)
                 .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+
         var curso = cursoRepo.findById(cursoId)
                 .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
 
@@ -30,7 +33,7 @@ public class AlunoService {
         return alunoRepo.save(aluno);
     }
 
-    public java.util.List<Aluno> listar() {
+    public List<Aluno> listar() {
         return alunoRepo.findAll();
     }
 
@@ -38,10 +41,8 @@ public class AlunoService {
         Aluno existente = alunoRepo.findById(alunoId)
                 .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
 
-        // preserve id
         alunoAtualizado.setId(existente.getId());
 
-        // if cursos não foram fornecidos, mantém os existentes
         if (alunoAtualizado.getCursos() == null) {
             alunoAtualizado.setCursos(existente.getCursos());
         }
@@ -55,5 +56,4 @@ public class AlunoService {
         }
         alunoRepo.deleteById(alunoId);
     }
-    
 }

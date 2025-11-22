@@ -1,14 +1,17 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Dashboard() {
+function Dashboard() {
   return (
-    <div className="container">
-      <h1>Sistema Acadêmico</h1>
-
-      <nav>
-        <Link to="/alunos">Alunos</Link>
-        <Link to="/cursos">Cursos</Link>
-      </nav>
+    <div style={{ padding: "20px", fontFamily: "Arial" }}>
+      <h1>🏠 Dashboard</h1>
+      <p>Escolha uma opção:</p>
+      <ul>
+        <li><Link to="/alunos">Gerenciar Alunos</Link></li>
+        <li><Link to="/cursos">Gerenciar Cursos</Link></li>
+      </ul>
     </div>
   );
 }
+
+export default Dashboard;

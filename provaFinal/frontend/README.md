@@ -11,6 +11,10 @@ npm install
 npm run dev
 Acesse http://localhost:5173
 
+## Tela Login
+
+![alt text](image.png)
+
 ## Como consumir a API
 - Base URL: http://localhost:8080/api
 - Endpoints disponíveis: /alunos, /cursos, etc.
